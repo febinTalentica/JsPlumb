@@ -1,0 +1,20 @@
+{
+    "nodes":
+            [
+                {"nodeID":1,"nodeData":"Start"},
+                {"nodeID":2,"nodeData":"Mon_Dep_Rec"},
+                {"nodeID":3,"nodeData":"Exe_Asset_Mng"},
+                {"nodeID":4,"nodeData":"PropertyRented?"},
+                {"nodeID":5,"nodeData":"Prop_Appraisal"},
+                {"nodeID":6,"nodeData":"Rehab Estimate"},
+                {"nodeID":7,"nodeData":"Rehab Estimate"}
+            ],
+    "relation":
+            {
+                "1":[2,3,4],
+                "2":[5,6],
+                "3":[],
+                "4":[7]
+            }
+    
+}

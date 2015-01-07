@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<TITLE>Character Relation Diagram: Strawberry Panic! - LNDB.info - The Light Novel Database</TITLE>
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<meta name="description" content="A character relation diagram for the Strawberry Panic! light novel." />
+<meta name="keywords" content="light novel character relation diagram, Strawberry Panic!">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+<link rel="stylesheet" href="/style/jsPlumbChar.css">
+<link rel="stylesheet" href="/style/jquery/themes/smoothness/jquery-ui-1.11.1.min.css">
+<script type="text/javascript" src="/style/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/style/jquery/jquery-ui-1.11.1.min.js"></script>
+<script type="text/javascript" src="/style/jquery/jquery.ui.touch-punch.js"></script>
+<script type="text/javascript" src="/style/jsPlumb/jquery.jsPlumb-1.6.2-min.js"></script>
+
+<style>
+.component {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	background-color: white;
+	color: black;
+	font-family: helvetica;
+	padding: 0.5em;
+}
+
+.window {
+	border:2px solid #346789;
+ 	/*width:14em;
+ 	height:20em;*/
+	z-index:20;
+	position:absolute;
+	font-size:0.8em;
+	border-radius:1em;
+	/*margin:1em;*/
+}
+
+.label {
+	border: 1px solid #346789;
+	padding: 8px;
+	padding: 8px;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.label_protagonist {
+	border: 1px solid #CC4444;
+	padding: 8px;
+	padding: 8px;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.label_main {
+	border: 1px solid #4444CC;
+	padding: 8px;
+	padding: 8px;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.label_other {
+	border: 1px solid #44CC44;
+	padding: 8px;
+	padding: 8px;
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.label_protagonist:hover {
+	border-color: #CC8888;
+}
+
+.label_main:hover {
+	border-color: #8888CC;
+}
+
+.label_other:hover {
+	border-color: #88CC88;
+}
+
+.label:hover {
+	border-color: #5d94a6;
+}
+
+.l1 {
+	font-size: 13px;
+}
+
+.close_box {
+    color: black;
+    font-weight: bold;
+    padding: 0px 5px;
+    display: inline;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* jQuery UI Dialogs */
+.ui-dialog {
+    overflow: hidden;
+}
+
+.ui-dialog .ui-dialog-title {
+    white-space: normal;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    width: 20px;
+    outline: none;
+}
+
+#window184 { top:64em; left:2em; border-color: #44CC44; text-align: center;}
+#window185 { top:64em; left:32em; border-color: #44CC44; text-align: center;}
+#window186 { top:64em; left:62em; border-color: #44CC44; text-align: center;}
+#window187 { top:64em; left:92em; border-color: #44CC44; text-align: center;}
+#window188 { top:64em; left:122em; border-color: #44CC44; text-align: center;}
+#window12 { top:32em; left:2em; border-color: #4444CC; text-align: center;}
+#window11 { top:32em; left:32em; border-color: #4444CC; text-align: center;}
+#window14 { top:64em; left:152em; border-color: #44CC44; text-align: center;}
+#window173 { top:64em; left:182em; border-color: #44CC44; text-align: center;}
+#window10 { top:32em; left:62em; border-color: #4444CC; text-align: center;}
+#window174 { top:64em; left:212em; border-color: #44CC44; text-align: center;}
+#window182 { top:64em; left:242em; border-color: #44CC44; text-align: center;}
+#window175 { top:64em; left:272em; border-color: #44CC44; text-align: center;}
+#window183 { top:64em; left:302em; border-color: #44CC44; text-align: center;}
+#window177 { top:64em; left:332em; border-color: #44CC44; text-align: center;}
+#window9 { top:2em; left:2em; border-color: #CC4444; text-align: center;}
+#window13 { top:64em; left:362em; border-color: #44CC44; text-align: center;}
+#window181 { top:64em; left:392em; border-color: #44CC44; text-align: center;}
+#window179 { top:64em; left:422em; border-color: #44CC44; text-align: center;}
+
+._jsPlumb_connector { z-index:4; }
+._jsPlumb_endpoint { z-index:5; }
+._jsPlumb_overlay { z-index:6; }
+.hl { border:3px solid red; }
+
+</style>
+
+<script type="text/javascript">
+    // Repaint on resize
+    function refresh() {
+        jsPlumb.repaintEverything();
+    }
+
+    $(window).on('resize', refresh);
+
+    // Google Analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37360375-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</HEAD>
+<BODY onload="w_launch();">
+
+<DIV style="position: absolute;">
+	<DIV id="char">
+        <DIV id='window184' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>源千妃絽</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/184" target="_blank">Chihiro Minamoto</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window185' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>源千華留</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/185" target="_blank">Chikaru Minamoto</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/185_s.jpeg'></DIV>
+<DIV id='window186' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>白檀籠女</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/186" target="_blank">Kagome Byakudan</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/186_s.jpeg'></DIV>
+<DIV id='window187' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>夏目檸檬</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/187" target="_blank">Remon Natsume</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/187_s.jpeg'></DIV>
+<DIV id='window188' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>日向絆奈</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/188" target="_blank">Kizuna Hyuuga</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/188_s.jpeg'></DIV>
+<DIV id='window12' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>此花光莉</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/12" target="_blank">Hikari Konohana</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/12_s.jpeg'></DIV>
+<DIV id='window11' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>鳳天音</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/11" target="_blank">Amane Otori</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/11_s.jpeg'></DIV>
+<DIV id='window14' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>南都夜々</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/14" target="_blank">Yaya Nanto</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/14_s.jpeg'></DIV>
+<DIV id='window173' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>東儀瞳</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/173" target="_blank">Hitomi Tougi</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window10' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>花園静馬</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/10" target="_blank">Shizuma Hanazono</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/10_s.jpeg'></DIV>
+<DIV id='window174' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>狩野水穂</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/174" target="_blank">Mizuho Kanou</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window182' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>草薙真箏</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/182" target="_blank">Makoto Kusanagi</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/182_s.jpeg'></DIV>
+<DIV id='window175' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>桜木花織</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/175" target="_blank">Kaori Sakuragi</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window183' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>草薙雅姫</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/183" target="_blank">Masaki Kusanagi</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window177' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>五百旗紅葉</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/177" target="_blank">Momiji Iohata</a><BR><img style='margin-top: 5px; width: 105px; height: 150px;' src='/style/no-image.jpg'></DIV>
+<DIV id='window9' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>蒼井渚砂</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/9" target="_blank">Nagisa Aoi</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/9_s.jpeg'></DIV>
+<DIV id='window13' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>涼水玉青</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/13" target="_blank">Tamao Suzumi</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/13_s.jpeg'></DIV>
+<DIV id='window181' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>鬼屋敷桃実</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/181" target="_blank">Momomi Kiyashiki</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/181_s.jpeg'></DIV>
+<DIV id='window179' class='component window'><STRONG style='font-family: meiryo, sans-serif;'>冬森詩遠</STRONG><BR><a href="http://lndb.info/light_novel/Strawberry_Panic!/char/179" target="_blank">Shion Toumori</a><BR><img style='margin-top: 5px;' src='/images/lightnovel/251/character/179_s.jpeg'></DIV>
+	</DIV>
+</DIV>
+
+<DIV id="explanation">
+    <div class="close_box" title="Click to close">×</div>
+    <P style="display: inline;">A character relation diagram for the characters of the "<a href="http://lndb.info/light_novel/Strawberry_Panic!">Strawberry Panic!</a>" light novel.</P>
+    <P>Characters' dialogs/boxes are draggable.</P>
+    <P>Relation boxes containing ellipses "..." at their end, can be clicked on to read the rest of the relation information.</P>
+    <P style="display: inline;">Characters in <span style="color: #CC4444;">red</span> boxes are protagonists.<br>
+    Characters in <span style="color: #4444CC;">blue</span> boxes are main characters.<br>
+    Characters in <span style="color: #44CC44;">green</span> boxes are other/minor characters.</P>
+</DIV>
+
+<script type="text/javascript">
+(function() {
+    $(document).on('click','.close_box',function(){
+        $(this).parent().fadeTo(300,0,function(){
+            $(this).remove();
+        });
+    });
+
+	jsPlumb.List = {
+
+		init : function() {
+			var bod = document.body;
+
+			var	menuString = '<a href="http://lndb.info/light_novel/Strawberry_Panic!">Strawberry Panic!</a>';
+
+			var m = document.createElement("div");
+			m.className = "menu";
+			m.innerHTML = menuString;
+			bod.appendChild(m);
+		}
+	};
+
+	window.jsPlumbChar = {
+		
+		init : function() {
+			
+			jsPlumb.importDefaults({
+				DragOptions : { cursor: "pointer", zIndex:2000 },
+				HoverClass: "connector-hover",
+                Container: "char"
+			});
+	
+			var hoverPaintStyle = { strokeStyle: "#7ec3d9" };		// hover paint style is merged on normal style, so you 
+			                                                        // don't necessarily need to specify a lineWidth
+
+                                                var connection_9_10 = jsPlumb.connect({
+                                        source:"window9",
+                                        target:"window10",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "lovers",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#9_10_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorProtagonist_9_13 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#CC4444"},
+                                        hoverPaintStyle:{strokeStyle:"#CC8888"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_protagonist",
+                                                label: "friends",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#9_13_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window9",
+                                        target:"window13"
+                                    }, stateMachineConnectorProtagonist_9_13);
+                                                var connection_12_11 = jsPlumb.connect({
+                                        source:"window12",
+                                        target:"window11",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "lovers",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#12_11_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorMain_12_14 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#4444CC"},
+                                        hoverPaintStyle:{strokeStyle:"#8888CC"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_main",
+                                                label: "best friends",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#12_14_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window12",
+                                        target:"window14"
+                                    }, stateMachineConnectorMain_12_14);
+                                                var connection_10_13 = jsPlumb.connect({
+                                        source:"window10",
+                                        target:"window13",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Former lovers",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#10_13_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_10_14 = jsPlumb.connect({
+                                        source:"window10",
+                                        target:"window14",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Acquaintances",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#10_14_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorOther_184_185 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "Mother",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#184_185_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window184",
+                                        target:"window185"
+                                    }, stateMachineConnectorOther_184_185);
+                                                var stateMachineConnectorOther_185_186 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "Club President",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#185_186_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window185",
+                                        target:"window186"
+                                    }, stateMachineConnectorOther_185_186);
+                                                var stateMachineConnectorOther_185_187 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "Club President",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#185_187_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window185",
+                                        target:"window187"
+                                    }, stateMachineConnectorOther_185_187);
+                                                var stateMachineConnectorOther_185_188 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "Club President",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#185_188_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window185",
+                                        target:"window188"
+                                    }, stateMachineConnectorOther_185_188);
+                                                var connection_186_182 = jsPlumb.connect({
+                                        source:"window186",
+                                        target:"window182",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "hates",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#186_182_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_187_186 = jsPlumb.connect({
+                                        source:"window187",
+                                        target:"window186",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "fellow club members",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#187_186_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_188_186 = jsPlumb.connect({
+                                        source:"window188",
+                                        target:"window186",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "fellow club members",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#188_186_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_188_187 = jsPlumb.connect({
+                                        source:"window188",
+                                        target:"window187",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Classmates, fellow club mem...",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#188_187_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorOther_14_12 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "best friends, in love with",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#14_12_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window14",
+                                        target:"window12"
+                                    }, stateMachineConnectorOther_14_12);
+                                                var connection_173_10 = jsPlumb.connect({
+                                        source:"window173",
+                                        target:"window10",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Childhood friends",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#173_10_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_173_174 = jsPlumb.connect({
+                                        source:"window173",
+                                        target:"window174",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Childhood Friends",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#173_174_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_174_10 = jsPlumb.connect({
+                                        source:"window174",
+                                        target:"window10",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Childhood friends",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#174_10_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorOther_182_11 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "antagonizes",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#182_11_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window182",
+                                        target:"window11"
+                                    }, stateMachineConnectorOther_182_11);
+                                                var stateMachineConnectorOther_182_185 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "in love with",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#182_185_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window182",
+                                        target:"window185"
+                                    }, stateMachineConnectorOther_182_185);
+                                                var connection_175_10 = jsPlumb.connect({
+                                        source:"window175",
+                                        target:"window10",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Former lovers",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#175_10_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorOther_183_182 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "Half-sisters",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#183_182_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window183",
+                                        target:"window182"
+                                    }, stateMachineConnectorOther_183_182);
+                                                var connection_177_9 = jsPlumb.connect({
+                                        source:"window177",
+                                        target:"window9",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Classmates",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#177_9_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var connection_177_13 = jsPlumb.connect({
+                                        source:"window177",
+                                        target:"window13",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Classmates",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#177_13_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+                                                var stateMachineConnectorOther_13_9 = {
+                                        connector:"StateMachine",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#44CC44"},
+                                        hoverPaintStyle:{strokeStyle:"#88CC88"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        overlays:[
+                                            ["Label", {
+                                                cssClass: "l1 component label_other",
+                                                label: "friends, in love with",
+                                                location: 0.7,
+                                                events: {
+                                                    "click": function(label, evt) {
+                                                        $("#13_9_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                        return false;
+                                                    }
+                                                }
+                                            }],
+                                            ["PlainArrow", {
+                                                location:1,
+                                                width:20,
+                                                length:12
+                                            }]
+                                        ]
+                                    };
+
+                                    jsPlumb.connect({
+                                        source:"window13",
+                                        target:"window9"
+                                    }, stateMachineConnectorOther_13_9);
+                                                var connection_181_179 = jsPlumb.connect({
+                                        source:"window181",
+                                        target:"window179",
+                                        paintStyle:{lineWidth:3,strokeStyle:"#346789"},
+                                        hoverPaintStyle:{strokeStyle:"#5d94a6"},
+                                        endpoint:"Blank",
+                                        anchor:"Continuous",
+                                        endpointsOnTop:true,
+                                        overlays:[ ["Label", {
+                                            cssClass: "l1 component label",
+                                            label: "Friends",
+                                            location: 0.5,
+                                            events: {
+                                                "click": function(label, evt) {
+                                                    $("#181_179_dialog").dialog({ minWidth: 220, minHeight: 140, create: function(event, ui) {$('.ui-dialog :button').prop("tabindex", -1);} }).dialog('option', 'position', {my: "left top", at: "left bottom", of: evt, offset: "0 0"});
+
+                                                    return false;
+                                                }
+                                            }
+                                        }],
+                                            ["Arrow", {
+                                                location:1
+                                            }],
+                                            ["Arrow", {
+                                                location:0,
+                                                direction:-1
+                                            }]
+                                        ]});
+            
+			// jsplumb event handlers
+	
+			// context menu (right click) on any component.
+			jsPlumb.bind("contextmenu", function(component, originalEvent) {
+                originalEvent.preventDefault();
+                return false;
+            });
+			
+			// make all .window divs draggable
+			jsPlumb.draggable(jsPlumb.getSelector(".window"));
+            
+		}
+	};
+
+    jsPlumb.bind("ready", function() {
+
+        jsPlumb.List.init();
+
+        // chrome fix.
+        document.onselectstart = function () { return false; };
+
+        // explanation div is draggable
+        $("#explanation").draggable();
+
+        jsPlumbChar.init();
+    });
+})();
+</script>
+
+<!-- Liviz.js code -->
+<script type="text/javascript" src="/style/Liviz.js/global-util.js?v=2"></script>
+<script type="text/javascript" src="/style/Liviz.js/workered.js?v=2"></script>
+<script type="text/javascript" src="/style/Liviz.js/progress-view.js?v=2"></script>
+<script type="text/javascript" src="/style/Liviz.js/progress-model.js?v=2"></script>
+<script type="text/javascript" src="/style/Liviz.js/stopgo.js?v=2"></script>
+
+<!-- The layout engine/algorithm to be used. Should be dot, fdp, sfdp, neato, twopi, or circo. -->
+<div id="layout-engine" style="display: none;">sfdp</div>
+<textarea id="dot-src" style="display: none;">
+digraph chargraph {
+graph[layout=sfdp, splines=line, overlap=prism, repulsiveforce=12, sep=5];
+node[shape=box, margin=0];
+subgraph cluster_0 {
+window184 -> window185;
+window185 -> window186;
+window185 -> window187;
+window185 -> window188;
+window12 -> window11 [dir="both"];
+window12 -> window14;
+window173 -> window10 [dir="both"];
+window173 -> window174 [dir="both"];
+window186 -> window182 [dir="both"];
+window175 -> window10 [dir="both"];
+window188 -> window186 [dir="both"];
+window188 -> window187 [dir="both"];
+window182 -> window11;
+window182 -> window185;
+window183 -> window182;
+window174 -> window10 [dir="both"];
+window177 -> window9 [dir="both"];
+window177 -> window13 [dir="both"];
+window9 -> window10 [dir="both"];
+window9 -> window13;
+window187 -> window186 [dir="both"];
+window10 -> window13 [dir="both"];
+window10 -> window14 [dir="both"];
+window13 -> window9;
+window14 -> window12;
+}
+subgraph cluster_1 {
+window181 -> window179 [dir="both"];
+}
+}</textarea>
+
+<div id="184_185_dialog" title="Relation of &quot;Chihiro Minamoto&quot; to &quot;Chikaru Minamoto&quot;" style="display: none;">
+    <p>Mother</p>
+</div>
+<div id="185_186_dialog" title="Relation of &quot;Chikaru Minamoto&quot; to &quot;Kagome Byakudan&quot;" style="display: none;">
+    <p>Club President</p>
+</div>
+<div id="185_187_dialog" title="Relation of &quot;Chikaru Minamoto&quot; to &quot;Remon Natsume&quot;" style="display: none;">
+    <p>Club President</p>
+</div>
+<div id="185_188_dialog" title="Relation of &quot;Chikaru Minamoto&quot; to &quot;Kizuna Hyuuga&quot;" style="display: none;">
+    <p>Club President</p>
+</div>
+<div id="12_11_dialog" title="Relation between &quot;Hikari Konohana&quot; and &quot;Amane Otori&quot;" style="display: none;">
+    <p>lovers</p>
+</div>
+<div id="12_14_dialog" title="Relation of &quot;Hikari Konohana&quot; to &quot;Yaya Nanto&quot;" style="display: none;">
+    <p>best friends</p>
+</div>
+<div id="173_10_dialog" title="Relation between &quot;Hitomi Tougi&quot; and &quot;Shizuma Hanazono&quot;" style="display: none;">
+    <p>Childhood friends</p>
+</div>
+<div id="173_174_dialog" title="Relation between &quot;Hitomi Tougi&quot; and &quot;Mizuho Kanou&quot;" style="display: none;">
+    <p>Childhood Friends</p>
+</div>
+<div id="186_182_dialog" title="Relation between &quot;Kagome Byakudan&quot; and &quot;Makoto Kusanagi&quot;" style="display: none;">
+    <p>hates</p>
+</div>
+<div id="175_10_dialog" title="Relation between &quot;Kaori Sakuragi&quot; and &quot;Shizuma Hanazono&quot;" style="display: none;">
+    <p>Former lovers</p>
+</div>
+<div id="188_186_dialog" title="Relation between &quot;Kizuna Hyuuga&quot; and &quot;Kagome Byakudan&quot;" style="display: none;">
+    <p>fellow club members</p>
+</div>
+<div id="188_187_dialog" title="Relation between &quot;Kizuna Hyuuga&quot; and &quot;Remon Natsume&quot;" style="display: none;">
+    <p>Classmates, fellow club members</p>
+</div>
+<div id="182_11_dialog" title="Relation of &quot;Makoto Kusanagi&quot; to &quot;Amane Otori&quot;" style="display: none;">
+    <p>antagonizes</p>
+</div>
+<div id="182_185_dialog" title="Relation of &quot;Makoto Kusanagi&quot; to &quot;Chikaru Minamoto&quot;" style="display: none;">
+    <p>in love with</p>
+</div>
+<div id="183_182_dialog" title="Relation of &quot;Masaki Kusanagi&quot; to &quot;Makoto Kusanagi&quot;" style="display: none;">
+    <p>Half-sisters</p>
+</div>
+<div id="174_10_dialog" title="Relation between &quot;Mizuho Kanou&quot; and &quot;Shizuma Hanazono&quot;" style="display: none;">
+    <p>Childhood friends</p>
+</div>
+<div id="177_9_dialog" title="Relation between &quot;Momiji Iohata&quot; and &quot;Nagisa Aoi&quot;" style="display: none;">
+    <p>Classmates</p>
+</div>
+<div id="177_13_dialog" title="Relation between &quot;Momiji Iohata&quot; and &quot;Tamao Suzumi&quot;" style="display: none;">
+    <p>Classmates</p>
+</div>
+<div id="181_179_dialog" title="Relation between &quot;Momomi Kiyashiki&quot; and &quot;Shion Toumori&quot;" style="display: none;">
+    <p>Friends</p>
+</div>
+<div id="9_10_dialog" title="Relation between &quot;Nagisa Aoi&quot; and &quot;Shizuma Hanazono&quot;" style="display: none;">
+    <p>lovers</p>
+</div>
+<div id="9_13_dialog" title="Relation of &quot;Nagisa Aoi&quot; to &quot;Tamao Suzumi&quot;" style="display: none;">
+    <p>friends</p>
+</div>
+<div id="187_186_dialog" title="Relation between &quot;Remon Natsume&quot; and &quot;Kagome Byakudan&quot;" style="display: none;">
+    <p>fellow club members</p>
+</div>
+<div id="10_13_dialog" title="Relation between &quot;Shizuma Hanazono&quot; and &quot;Tamao Suzumi&quot;" style="display: none;">
+    <p>Former lovers</p>
+</div>
+<div id="10_14_dialog" title="Relation between &quot;Shizuma Hanazono&quot; and &quot;Yaya Nanto&quot;" style="display: none;">
+    <p>Acquaintances</p>
+</div>
+<div id="13_9_dialog" title="Relation of &quot;Tamao Suzumi&quot; to &quot;Nagisa Aoi&quot;" style="display: none;">
+    <p>friends, in love with</p>
+</div>
+<div id="14_12_dialog" title="Relation of &quot;Yaya Nanto&quot; to &quot;Hikari Konohana&quot;" style="display: none;">
+    <p>best friends, in love with</p>
+</div>
+
+</BODY>
+</HTML>
